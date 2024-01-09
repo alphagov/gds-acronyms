@@ -61,9 +61,8 @@ document.addEventListener('DOMContentLoaded', async function () {
   const gridDiv = document.querySelector('#myGrid');
   gridApi = agGrid.createGrid(gridDiv, gridOptions);
 
-    //fetch('/public/data/acronym.csv')
     try {
-      fetch(`https://docs.google.com/spreadsheets/d/e/2PACX-1vRT5feIKAxaKgxNzX5dX6e2ufaTZkuMZYangwyn2B0deEYcngIrJgopldYZX6THjO3KqlZs5Dxusu_R/pub?output=csv`)
+      fetch('https://docs.google.com/spreadsheets/d/e/2PACX-1vRT5feIKAxaKgxNzX5dX6e2ufaTZkuMZYangwyn2B0deEYcngIrJgopldYZX6THjO3KqlZs5Dxusu_R/pub?output=csv')
         .then(response => response.text())
         .then(data => {
           const result = csvToJson(data.replace(/"/g,''))
