@@ -1,0 +1,16 @@
+//
+// For guidance on how to add CSS and SCSS see:
+// https://prototype-kit.service.gov.uk/docs/adding-css-javascript-and-images
+//
+
+.ag-theme-alpine {
+	 font-family: "GDS Transport", arial, sans-serif;
+	 font-size: 16px;
+}
+.ag-theme-alpine .ag-cell-value {
+	 font-size: 16px;
+}
+
+[col-id="Acronym"] .ag-cell-value {
+	font-weight: 800;
+}

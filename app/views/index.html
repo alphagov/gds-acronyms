@@ -1,0 +1,26 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName="Home" %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+
+    {% if (GOVUKPrototypeKit.isDevelopment) %}
+      {% include "govuk-prototype-kit/includes/homepage-top.njk" %}
+    {% endif %}
+
+    <h2 class="govuk-heading-m">
+      Gift week
+    </h2>
+
+    <ul class="govuk-list govuk-list--bullet">
+      <li><a href="/acronyms">GDS Acronyms</a></li>
+    </ul>
+
+  </div>
+</div>
+
+{% endblock %}
