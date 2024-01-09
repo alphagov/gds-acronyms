@@ -27,7 +27,7 @@ function onFilterTextBoxChanged() {
 
 function csvToJson(csv) {
     // Split the input into lines
-    let lines = csv.split("\n");
+    let lines = csv.split("\r");
 
     // Extract headers
     let headers = lines[0].split(",");
