@@ -2,8 +2,8 @@ let gridApi;
 
 const gridOptions = {
   columnDefs: [
-    { field: 'Acronym' },
-    { field: 'Definition', minWidth: 280},
+    { field: 'Acronym', minWidth: 110 },
+    { field: 'Definition', minWidth: 220},
     { field: 'Meaning' },
     { field: 'GDS Directorates'},
     { field: 'Team'},
@@ -45,14 +45,11 @@ function csvToJson(csv) {
 
         result.push(obj);
     }
-
     // Return the JSON array
-
     return {
       data: JSON.stringify(result, null, 2),
       updated: result[result.length -1]?.Timestamp
     }
-
 
 }
 
@@ -70,7 +67,7 @@ document.addEventListener('DOMContentLoaded', async function () {
           return gridApi.setGridOption('rowData', JSON.parse(result.data))
         });
     } catch(err) {
-      console.log(err)
+      console.error(err)
     }
 
 });

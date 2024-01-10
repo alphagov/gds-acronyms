@@ -2,25 +2,52 @@
 
 {% set pageName="Home" %}
 
+
+
+{% block head %}
+  <script src="https://cdn.jsdelivr.net/npm/ag-grid-community/dist/ag-grid-community.min.js"></script>
+  {% block meta %}{% endblock %}
+  {% block stylesheets %}
+    {% include "govuk-prototype-kit/includes/stylesheets.njk" %}
+  {% endblock %}
+{% endblock %}
+
+
+{% block header %}
+  {{ govukHeader({
+    homepageUrl: "/",
+    serviceName: "GAFT - GDS Acronym Finding Tool",
+    serviceUrl: "/",
+    navigation: []
+  }) }}
+{% endblock %}
+
 {% block content %}
 
 <div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds">
-
-
-    {% if (GOVUKPrototypeKit.isDevelopment) %}
-      {% include "govuk-prototype-kit/includes/homepage-top.njk" %}
-    {% endif %}
-
-    <h2 class="govuk-heading-m">
-      Gift week
-    </h2>
-
-    <ul class="govuk-list govuk-list--bullet">
-      <li><a href="/acronyms">GDS Acronyms</a></li>
-    </ul>
-
+  <div class="govuk-grid-column-full">
+    <h1 class="govuk-heading-m">Search GDS acronyms</h1>
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-one-half">
+      <div class="govuk-form-group">
+        <label class="govuk-label govuk-visually-hidden" for="event-name">
+          Filter
+        </label>
+        <input class="govuk-input"  id="filter-text-box" name="eventName"  id="filter-text-box" placeholder="Start typing..." type="text" oninput="onFilterTextBoxChanged()">
+      </div>
+      </div>
+        <div class="govuk-grid-column-one-half" >
+          <a href="https://script.google.com/a/macros/digital.cabinet-office.gov.uk/s/AKfycbzdIHjTn_VDaC2LE_ppHejpTQeamaBb4OEEVqQX8oJxxLjHsFA3Gqh9kr6KbxBZAkYngQ/exec" target="_blank" class="govuk-body" style="float: right;margin-top: 20px">
+            Add to the list
+          </a>
+        </div>
+      </div>
+    <div id="myGrid" class="ag-theme-alpine" style="height: 500px"></div>
+    <p class="govuk-body govuk-!-margin-top-6">Last Updated <span id="updated"></span></p>
   </div>
 </div>
+{% endblock %}
 
+{% block pageScripts %}
+  <script src="/public/javascripts/main.js"></script>
 {% endblock %}
