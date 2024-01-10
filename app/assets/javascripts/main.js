@@ -2,7 +2,7 @@ let gridApi;
 
 const gridOptions = {
   columnDefs: [
-    { field: 'Acronym', minWidth: 110 },
+    { field: 'Acronym', minWidth: 110, sort: 'asc'},
     { field: 'Definition', minWidth: 220},
     { field: 'Meaning' },
     { field: 'GDS Directorates'},
