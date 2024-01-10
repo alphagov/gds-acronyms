@@ -2,8 +2,13 @@
 image := europe-west2-docker.pkg.dev/gaf-gds-acronym-finder/gaf/gaf
 PORT ?= 3000
 
+.PHONY: docker-build gcloud-build
+
+deploy: docker-build gcloud-build
 
 local-init:
+	gcloud config set project gaf-gds-acronym-finder
+	gcloud auth login
 	npm install
 
 local-dev:
