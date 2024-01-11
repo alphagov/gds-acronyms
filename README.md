@@ -1,6 +1,8 @@
 # GDS Acronyms
 
-Search for the meanings of acronyms specific to GDS
+An app that allows you to search for the meanings of acronyms specific to GDS
+
+Installation
 ```sh
 npm install
 ```
