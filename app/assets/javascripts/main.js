@@ -25,6 +25,23 @@ function onFilterTextBoxChanged() {
   );
 }
 
+function getLatestDate(str) {
+  // Split the string into an array of date strings
+  const dateArray = dateString.split(/\s*,\s*/);
+
+  // Convert each date string to a Date object
+  const dateObjects = dateArray.map(dateString => new Date(dateString));
+
+  // Filter out invalid dates
+  const validDates = dateObjects.filter(dateObject => !isNaN(dateObject.getTime()));
+
+  // Find the latest date
+  const latestDate = new Date(Math.max(...validDates.map(dateObject => dateObject.getTime())));
+
+  // Return the latest date as a string
+  return latestDate.toDateString();
+}
+
 function csvToJson(csv) {
     // Split the input into lines
     let lines = csv.split("\r");
@@ -45,10 +62,23 @@ function csvToJson(csv) {
 
         result.push(obj);
     }
+
+    // Convert each date string to a Date object
+    const dateObjects = result.map(x=> new Date(new Date(x.Timestamp).toLocaleString("en-GB")))
+
+    // Filter out invalid dates
+    const validDates = dateObjects.filter(dateObject => !isNaN(dateObject.getTime()));
+
+    // Find the latest date
+    const latestDate = new Date(Math.max(...validDates.map(dateObject => dateObject.getTime())));
+
+    // Return the formatted date
+    const formattedDate = latestDate.toLocaleString('en-GB');
+    
     // Return the JSON array
     return {
       data: JSON.stringify(result, null, 2),
-      updated: result[result.length -1]?.Timestamp
+      updated: formattedDate
     }
 
 }
