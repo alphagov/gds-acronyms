@@ -26,7 +26,7 @@
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-full">
-    <h1 class="govuk-heading-m">Search GDS acronyms</h1>
+    <h1 class="govuk-heading-m">Search GDS Acronyms</h1>
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-one-half">
       <div class="govuk-form-group">
@@ -49,6 +49,16 @@
     </p>
   </div>
 </div>
+
+{% endblock %}
+
+{% block footer %}
+  {{ govukFooter({
+    meta: {
+      items: [],
+      visuallyHiddenTitle: "Footer links"
+    }
+  }) }}
 {% endblock %}
 
 {% block pageScripts %}
