@@ -2,9 +2,9 @@
 image := europe-west2-docker.pkg.dev/gaf-gds-acronym-finder/gaf/gaf
 PORT ?= 3000
 
-.PHONY: docker-build gcloud-build
+.PHONY: docker-build gcloud-build gcloud-deploy
 
-deploy: docker-build gcloud-build
+deploy: docker-build gcloud-build gcloud-deploy
 
 local-init:
 	gcloud config set project gaf-gds-acronym-finder
@@ -25,6 +25,9 @@ docker-clean:
 
 gcloud-build:
 	gcloud builds submit --tag $(image)
+
+gcloud-deploy:
+	gcloud run deploy gaf --image=$(image) --region=europe-west2
 
 cloud-push:
 	docker push $(image)
